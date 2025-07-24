@@ -1,6 +1,3 @@
-class Demo():
-  def fetch_code_from_repo():
-    return "fetching code"
 import os
 from azure.identity import ClientSecretCredential
 from azure.mgmt.containerservice import ContainerServiceClient
