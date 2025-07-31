@@ -1,12 +1,13 @@
+# In-memory user list
+users = []
+
 def get_user_info():
-    return {
-        "id": 1,
-        "name": "Test User",
-        "email": "test@example.com"
-    }
+    return users
 
 def create_user(data):
-    # Business logic goes here – for now just echoing back
+    user_id = len(users) + 1
+    data["id"] = user_id
+    users.append(data)
     return {
         "message": "User created successfully",
         "user": data
