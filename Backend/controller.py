@@ -1,5 +1,5 @@
 from flask import Blueprint, request, jsonify
-from api_testing import create_user, get_all_users, create_task, get_all_tasks
+from model import create_user, get_all_users, create_task, get_all_tasks
 from app import app
 
 @app.route('/users', methods=['GET'])
