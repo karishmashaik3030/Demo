@@ -1,6 +1,6 @@
 from app import app
 from employeemodel import add_employee, get_all_employees
-@app.route("/add-employee", methods=["POST"])
+@app.route("/add-employee-details", methods=["POST"])
 def add_employee_route():
     try:
         data = request.get_json()
