@@ -1,7 +1,7 @@
 from flask import Blueprint, request, jsonify
 from User.usermodel import get_user_info, create_user
 from app import app
-
+#this is belongs to user
 @app.route("/get-users", methods=["GET"])
 def get_user():
     result = get_user_info()
