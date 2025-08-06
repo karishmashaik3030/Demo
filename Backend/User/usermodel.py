@@ -1,4 +1,4 @@
-# In-memory user list
+# In-memory user list to get user details
 users = []
 
 def get_user_info():
