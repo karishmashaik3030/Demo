@@ -1,0 +1,38 @@
+from authmodel import authenticate_user, get_all_public_data, get_all_private_data
+from app import app
+@app.route("/login", methods=["POST"])
+def login():
+    """
+    Public endpoint — authenticate user and return JWT token.
+    """
+    data = request.get_json()
+    username = data.get("username")
+    password = data.get("password")
+
+    user = authenticate_user(username, password)
+    if not user:
+        return jsonify({"msg": "Invalid credentials"}), 401
+
+    token = create_access_token(identity=username)
+    return jsonify({"access_token": token}), 200
+
+
+@app.route("/public-data", methods=["GET"])
+def public_data():
+    """
+    Public endpoint — no authentication required.
+    """
+    return jsonify(get_all_public_data()), 200
+
+
+@app.route("/private-data", methods=["GET"])
+@jwt_required()
+def private_data():
+    """
+    Protected endpoint — requires JWT authentication.
+    """
+    current_user = get_jwt_identity()
+    return jsonify({
+        "user": current_user,
+        "data": get_all_private_data()
+    }), 200
