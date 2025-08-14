@@ -1,6 +1,6 @@
 from authmodel import authenticate_user, get_all_public_data, get_all_private_data
 from app import app
-# controller code
+# controller
 @app.route("/login", methods=["POST"])
 def login():
     """
